@@ -45,8 +45,7 @@ angular.module('app').controller("MainController", function(){
       rating: 8.9,
       favorite: true
     }
-  ]
-});
+  ];
 vm.orders = [
   {
     id: 1,
@@ -74,3 +73,9 @@ vm.orders = [
   }
 ];
 vm.order = vm.orders[0];
+vm.new = {};
+vm.addShow = function() {
+  vm.shows.push(vm.new);
+  vm.new = {};
+};
+});

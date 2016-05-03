@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Movies</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <title>Shows</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="app.js"></script>
-    <script src ="main.ctrl.js"></script>
+    <script src="main.ctrl.js"></script>
   </head>
   <body ng-app="app" ng-controller="MainController as main">
     <div class="container">
@@ -15,7 +15,7 @@
         <span class="input-group-addon">
           <span class="glyphicon glyphicon-search"></span>
         </span>
-        <input type="text" class='form-control' ng-model="main.searchInput">
+        <input type="text" class="form-control" ng-model="main.searchInput">
       </div>
       <h3>A list of TV shows</h3>
       <ul class="list-group">
@@ -24,7 +24,7 @@
       <select  class="form-control pull-right" ng-model="main.order" ng-options="order as order.title for order in main.orders"></select>
       <div class="clearfix"></div>
       <h3>Add a new Show</h3>
-      <form name="main.addForm" class="form">
+      <form name="main.addForm" class="form" ng-submit="main.addShow()">
         <div class="form-group">
           <label>Title</label>
           <input type="text" class="form-control" ng-model="main.new.title" required />
@@ -32,6 +32,10 @@
         <div class="form-group">
           <label>Year</label>
           <input type="number" min="1900" max="2030" class="form-control" ng-model="main.new.year" required />
+        </div>
+        <div class="form-group">
+          <label>Rating</label>
+          <input type="float" min="1.0" max="10.0" class="form-control" ng-model="main.new.rating" required />
         </div>
         <div class="row">
           <div class="col-xs-6">
